@@ -1,0 +1,125 @@
+@import 'sass/variables', 'sass/mixins';
+
+:root {
+   @include reset;
+   padding: 10px 20px 0 20px;
+}
+
+body {
+   @include reset;
+   height: 100vh;
+   @include flex(row, center, center, center);
+   overflow: hidden;
+   background: linear-gradient(0deg, rgba(176,70,147,1) 0%, rgba(54,99,125,1) 100%); 
+   font-family: "Space Grotesk", sans-serif;
+   background-attachment: fixed;
+}
+.main {
+   height: 100%;
+   width: 100%;
+   @include flex(column, space-between, center, none);
+   .navbar {
+      @include flex(row, flex-end, center, center);
+      gap: 20px;
+      height: 10%;
+      .nav-btn {
+         font-family: "Space Grotesk", sans-serif;
+         border: none;
+         color: white;
+         font-size: 2em;
+         font-weight: 700;
+         background: none;
+         &:hover {
+            cursor: pointer;
+         }
+      }
+      .nav-btn:not(.nav-theme, .nav-drop) {
+         border-bottom: 5px solid white; 
+         transition: all .2s ease-in-out;
+         &:hover {
+            padding-bottom: 10px;
+         }
+      }
+      .nav-drop {
+         color: white;
+         border: white solid 3px;
+         border-radius: 10px;
+         width: 160px;
+         height: 60px;
+      }
+      .click-menu {
+         display: none;
+      }
+   }
+   .main-text {
+      @include flex(column, center, center, center);
+      .intro-text {
+         @include flex(column, center, center, center);
+         .top {
+            color: $--primary-color;
+            font-weight: bold;
+            font-size: 4.5em;
+            @include flex(row, center, center, center);
+            gap: 0.25em;
+            .third {
+              color: $--secondary-color;
+            };
+         }
+         .bottom {
+            font-size: 2em;
+            color: $--tertiary-text;
+            font-weight: 500;
+         }
+      }
+      .start {
+         height: 80px;
+         width: 340px;
+         background-color: rgba(143, 152, 236, 0.26);
+         color: $--primary-color;
+         border: none;
+         border-radius: 30px;
+         font-weight: 500;
+         font-size: 2.5em;
+         box-shadow: 0px 7px 9.8px -1px rgba(0, 0, 0, 0.30);
+         &:hover {
+            cursor: pointer;
+         }
+      }
+   }
+   .main-footer {
+      color: red;
+   }
+}
+
+@media screen and (max-width: 700px) {
+   .main {
+      .main-text {
+         .intro-text {
+            .top {
+               font-size: 2.5em;
+            }
+            .bottom {
+               font-size: 1em;
+            }
+         }
+         .start {
+            height: 53px;
+            width: 238px;
+            font-size: 2em;
+         }
+      }
+   }
+}
+
+@media screen and (max-width: 800px) {
+   .main {
+      .navbar {
+         .nav-btn {
+            display: none;
+         }
+         .click-menu {
+            display: block;
+         }
+      }
+   }
+}

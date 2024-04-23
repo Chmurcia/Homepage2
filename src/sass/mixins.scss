@@ -1,0 +1,12 @@
+@mixin flex($dir, $jus, $ali, $alt) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $jus;
+    align-content: $ali;
+    align-items: $alt;
+}
+
+@mixin reset {
+    margin: 0;
+    padding: 0;
+}
