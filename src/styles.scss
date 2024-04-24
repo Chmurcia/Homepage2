@@ -2,16 +2,16 @@
 
 :root {
    @include reset;
-   padding: 10px 20px 0 20px;
+   padding: 30px 20px 0 20px;
 }
 
 body {
    @include reset;
    height: 100vh;
-   @include flex(row, center, center, center);
    overflow: hidden;
    background: linear-gradient(0deg, rgba(176,70,147,1) 0%, rgba(54,99,125,1) 100%); 
    font-family: "Space Grotesk", sans-serif;
+   background-size: cover;
    background-attachment: fixed;
 }
 .main {
@@ -19,9 +19,17 @@ body {
    width: 100%;
    @include flex(column, space-between, center, none);
    .navbar {
-      @include flex(row, flex-end, center, center);
+      flex-direction: row;
+      justify-content: flex-end;
+      align-content: center;
+      align-items: flex-start;
+      display: flex;
       gap: 20px;
-      height: 10%;
+      height: 15vh;
+      button:not(.click-menu, .en, .de, .pl), .nav-theme {
+         opacity: 0;
+         pointer-events: none;
+      }
       .nav-btn {
          font-family: "Space Grotesk", sans-serif;
          border: none;
@@ -44,11 +52,16 @@ body {
          color: white;
          border: white solid 3px;
          border-radius: 10px;
-         width: 160px;
+         width: 210px;
          height: 60px;
       }
       .click-menu {
          display: none;
+         border: none;
+         background: none;
+         &:hover {
+            cursor: pointer;
+         }
       }
    }
    .main-text {
@@ -81,6 +94,7 @@ body {
          font-weight: 500;
          font-size: 2.5em;
          box-shadow: 0px 7px 9.8px -1px rgba(0, 0, 0, 0.30);
+         pointer-events: none;
          &:hover {
             cursor: pointer;
          }
@@ -88,6 +102,38 @@ body {
    }
    .main-footer {
       color: red;
+      @include flex(row, center, center, center);
+      height: 20vh;
+      .main-footer-svg {
+         opacity: 0;
+      }
+   }
+}
+
+.drop-menu {
+   border: 3px solid rgb(255, 255, 255);
+   border-radius: 10px;
+   padding: 5px 0 5px 0;
+   position: absolute;
+   width: 210px;
+   height: 200px;
+   display: none;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: flex-start;
+   button {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      border: none;
+      background: none;
+      font-size: 2em;
+      color: white;
+      margin-left: 10px;
+      transition: all .3s ease-in-out;
+      &:hover {
+         cursor: pointer;
+         color: $--secondary-color;
+      }
    }
 }
 
@@ -119,6 +165,11 @@ body {
          }
          .click-menu {
             display: block;
+            opacity: 0;
+         }
+         .drop-menu {
+            display: none;
+            opacity: 0;
          }
       }
    }
